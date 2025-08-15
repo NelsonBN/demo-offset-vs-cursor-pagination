@@ -1,0 +1,9 @@
+@Host = http://localhost:8080
+
+### Get last product
+GET {{Host}}/extra/last
+
+###
+
+### Delete a product (for testing)
+DELETE {{Host}}/extra/products/11

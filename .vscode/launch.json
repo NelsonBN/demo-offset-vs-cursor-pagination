@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Demo",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/bin/Debug/net9.0/Demo.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src",
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    }
+  ]
+}
