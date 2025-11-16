@@ -4,7 +4,7 @@
 ######### BY OFFSET #########
 
 
-GET {{Host}}/by-offset?page=1&pageSize=5
+GET {{Host}}/by-offset?page=99410&pageSize=100
 
 ### OFFSET - SORTED
 
@@ -14,11 +14,11 @@ GET {{Host}}/by-offset/sorted?page=2&pageSize=5&sort=-Quantity
 ######### BY CURSOR #########
 
 
-GET {{Host}}/by-cursor?pageSize=10&cursor=013579bd-f246-8ace-0135-79bdf2468ace
+GET {{Host}}/by-cursor?pageSize=100&cursor=fe7d6f2f-179e-4d08-9b4f-89876100ff89
 
 ### CURSOR - SORTED
 
-GET {{Host}}/by-cursor/sorted?pageSize=2&sort=-Id
+GET {{Host}}/by-cursor/sorted?pageSize=2&sort=-Quantity&cursor=89|fe7d6f2f-179e-4d08-9b4f-89876100ff89
 
 ###
 

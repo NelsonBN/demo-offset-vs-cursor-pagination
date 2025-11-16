@@ -11,6 +11,7 @@ services:
       - 27017:27017
     volumes:
       - ./data/NoSQL/init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      #- ./data/NoSQL/huge-data.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     networks:
       - demo
     healthcheck:
