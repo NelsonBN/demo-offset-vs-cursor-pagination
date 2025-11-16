@@ -2,11 +2,22 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Demo",
+      "name": "Demo.SQL",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/src/bin/Debug/net9.0/Demo.dll",
+      "program": "${workspaceFolder}/src/Demo.SQL/bin/Debug/net10.0/Demo.SQL.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src",
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    },
+    {
+      "name": "Demo.NoSQL",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/Demo.NoSQL/bin/Debug/net10.0/Demo.NoSQL.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src",
       "console": "integratedTerminal",

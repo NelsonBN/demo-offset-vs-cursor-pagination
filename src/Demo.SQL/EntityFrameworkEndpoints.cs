@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Demo;
-
+namespace Demo.SQL;
 public static class EntityFrameworkEndpoints
 {
     public static IEndpointRouteBuilder MapEntityFrameworkEndpoints(this IEndpointRouteBuilder endpoints)
@@ -106,7 +105,7 @@ public static class EntityFrameworkEndpoints
             int pageSize = 20,
             string sort = nameof(Product.Id)) =>
         {
-            IQueryable<Product> query = db
+            var query = db
                 .Products
                 .SortBy(s => s.Id, sort, cursor);
 

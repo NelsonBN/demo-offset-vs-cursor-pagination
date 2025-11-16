@@ -1,0 +1,36 @@
+networks:
+  demo:
+    driver: bridge
+
+services:
+  mongodb:
+    image: mongo:8.2.1
+    container_name: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data/NoSQL/init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - demo
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  mongo-express:
+    image: mongo-express:1-18
+    container_name: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_BASICAUTH: false
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
+    networks:
+      - demo
+    depends_on:
+      mongodb:
+        condition: service_healthy

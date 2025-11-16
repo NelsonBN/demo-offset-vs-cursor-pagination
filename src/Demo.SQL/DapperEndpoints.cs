@@ -1,8 +1,7 @@
 ﻿using System.Data;
 using Dapper;
 
-namespace Demo;
-
+namespace Demo.SQL;
 public static class DapperEndpoints
 {
     public static IEndpointRouteBuilder MapDapperEndpoints(this IEndpointRouteBuilder endpoints)

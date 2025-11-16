@@ -3,6 +3,8 @@ using System.Data;
 using System.Linq.Expressions;
 using System.Reflection;
 
+namespace Demo.SQL;
+
 public static class Extensions
 {
     // Cache for compiled expression trees to avoid rebuilding them

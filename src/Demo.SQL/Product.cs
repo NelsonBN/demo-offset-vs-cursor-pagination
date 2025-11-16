@@ -1,3 +1,5 @@
+namespace Demo.SQL;
+
 public record Product(
     int Id,
     string Name,

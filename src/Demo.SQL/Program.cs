@@ -1,5 +1,5 @@
 using System.Data;
-using Demo;
+using Demo.SQL;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 

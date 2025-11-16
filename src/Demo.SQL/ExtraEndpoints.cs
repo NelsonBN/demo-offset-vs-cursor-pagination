@@ -2,7 +2,7 @@
 using Dapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace Demo;
+namespace Demo.SQL;
 
 public static class ExtraEndpoints
 {

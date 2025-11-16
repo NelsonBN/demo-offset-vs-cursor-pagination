@@ -1,0 +1,81 @@
+@Host = http://localhost:8080
+
+################## DAPPER ##################
+
+######### BY OFFSET #########
+
+
+GET {{Host}}/dp/by-offset?page=3&pageSize=5
+
+### DAPPER - OFFSET - SORTED
+
+GET {{Host}}/dp/by-offset/sorted?page=1&pageSize=5&sort=-Quantity
+
+
+######### BY CURSOR #########
+
+
+GET {{Host}}/dp/by-cursor?pageSize=10&cursor=3
+
+### DAPPER - CURSOR - SORTED
+
+GET {{Host}}/dp/by-cursor/sorted?pageSize=10&sort=-Id
+
+###
+
+GET {{Host}}/dp/by-cursor/sorted?pageSize=10&sort=-Id&cursor=30|30
+
+###
+
+GET {{Host}}/dp/by-cursor/sorted?pageSize=30&sort=-Quantity
+
+###
+
+GET {{Host}}/dp/by-cursor/sorted?pageSize=30&sort=-Quantity&cursor=50|5
+
+
+################## EntityFramework ##################
+
+
+######### BY OFFSET #########
+
+
+GET {{Host}}/ef/by-offset?page=3&pageSize=5
+
+### EF - OFFSET - SORTED
+
+GET {{Host}}/ef/by-offset/sorted?page=1&pageSize=5&sort=-Quantity
+
+
+######### BY CURSOR #########
+
+
+GET {{Host}}/ef/by-cursor?pageSize=10&cursor=3
+
+### EF - CURSOR - SORTED
+
+GET {{Host}}/ef/by-cursor/sorted?pageSize=10&sort=-Id
+
+###
+
+GET {{Host}}/ef/by-cursor/sorted?pageSize=10&sort=-Id&cursor=30|30
+
+###
+
+GET {{Host}}/ef/by-cursor/sorted?pageSize=30&sort=-Quantity
+
+###
+
+GET {{Host}}/ef/by-cursor/sorted?pageSize=30&sort=-Quantity&cursor=50|25
+
+
+################## Extra ##################
+
+
+### Get last product
+GET {{Host}}/extra/last
+
+###
+
+### Delete a product (for testing)
+DELETE {{Host}}/extra/products/11

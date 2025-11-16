@@ -1,0 +1,45 @@
+@Host = http://localhost:8080
+
+
+######### BY OFFSET #########
+
+
+GET {{Host}}/by-offset?page=1&pageSize=5
+
+### OFFSET - SORTED
+
+GET {{Host}}/by-offset/sorted?page=2&pageSize=5&sort=-Quantity
+
+
+######### BY CURSOR #########
+
+
+GET {{Host}}/by-cursor?pageSize=10&cursor=013579bd-f246-8ace-0135-79bdf2468ace
+
+### CURSOR - SORTED
+
+GET {{Host}}/by-cursor/sorted?pageSize=2&sort=-Id
+
+###
+
+GET {{Host}}/by-cursor/sorted?pageSize=10&sort=-Id&cursor=113a4d79-ad9e-4933-90b4-aa5a48ff7ce3|113a4d79-ad9e-4933-90b4-aa5a48ff7ce3
+
+###
+
+GET {{Host}}/by-cursor/sorted?pageSize=30&sort=-Quantity
+
+###
+
+GET {{Host}}/by-cursor/sorted?pageSize=30&sort=-Quantity&cursor=30|113a4d79-ad9e-4933-90b4-aa5a48ff7ce3
+
+
+################## Extra ##################
+
+
+### Get last product
+GET {{Host}}/extra/last
+
+###
+
+### Delete a product (for testing)
+DELETE {{Host}}/extra/products/013579bd-f246-8ace-0135-79bdf2468ace
