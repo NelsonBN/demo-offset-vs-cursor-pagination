@@ -1,12 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 
-namespace Demo.SQL;
+namespace Demo.NoSQL;
 
-public static class EntityFrameworkEndpoints
+internal static class LinqEndpoints
 {
-    public static IEndpointRouteBuilder MapEntityFrameworkEndpoints(this IEndpointRouteBuilder endpoints)
+    public static IEndpointRouteBuilder MapLinqEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        var group = endpoints.MapGroup("ef");
+        var group = endpoints.MapGroup("lq");
         group.MapOffsetEndpoints();
         group.MapCursorEndpoints();
         return endpoints;
@@ -18,17 +19,15 @@ public static class EntityFrameworkEndpoints
 
         group.MapGet("", async (
             HttpContext context,
-            DataContext db,
+            IMongoCollection<Product> collection,
             CancellationToken cancellationToken,
             int page = 1,
             int pageSize = 20) =>
         {
-            var products = await db
-                .Products
+            var products = await collection.AsQueryable()
                 .OrderBy(p => p.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .AsNoTracking()
                 .ToListAsync(cancellationToken);
 
             context.Response.Headers.Append(nameof(page), page.ToString());
@@ -39,18 +38,18 @@ public static class EntityFrameworkEndpoints
 
         group.MapGet("sorted", async (
             HttpContext context,
-            DataContext db,
+            IMongoCollection<Product> collection,
             CancellationToken cancellationToken,
             int page = 1,
             int pageSize = 20,
             string sort = nameof(Product.Id)) =>
         {
-            var products = await db
-                .Products
+            var (propertyName, isDescending) = sort.ParseSortParameter();
+
+            var products = await collection.AsQueryable()
                 .SortBy(sort)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .AsNoTracking()
                 .ToListAsync(cancellationToken);
 
             context.Response.Headers.Append(nameof(page), page.ToString());
@@ -63,20 +62,18 @@ public static class EntityFrameworkEndpoints
         return group;
     }
 
-
     private static IEndpointRouteBuilder MapCursorEndpoints(this IEndpointRouteBuilder endpoints)
     {
         var group = endpoints.MapGroup("by-cursor");
 
         group.MapGet("", async (
             HttpContext context,
-            DataContext db,
+            IMongoCollection<Product> collection,
             CancellationToken cancellationToken,
-            int? cursor = null,
+            Guid? cursor = null,
             int pageSize = 20) =>
         {
-            IQueryable<Product> query = db
-                .Products
+            IQueryable<Product> query = collection.AsQueryable()
                 .OrderBy(p => p.Id);
 
             if (cursor is not null)
@@ -86,7 +83,6 @@ public static class EntityFrameworkEndpoints
 
             var products = await query
                 .Take(pageSize)
-                .AsNoTracking()
                 .ToListAsync(cancellationToken);
 
             if (products.Count > 0)
@@ -100,20 +96,17 @@ public static class EntityFrameworkEndpoints
 
         group.MapGet("sorted", async (
             HttpContext context,
-            DataContext db,
+            IMongoCollection<Product> collection,
             CancellationToken cancellationToken,
             string? cursor = null,
             int pageSize = 20,
             string sort = nameof(Product.Id)) =>
         {
-            var products = await db
-                .Products
+            var products = await collection.AsQueryable()
                 .SortBy(s => s.Id, sort, cursor)
                 .Take(pageSize)
-                .AsNoTracking()
                 .ToListAsync(cancellationToken);
 
-            // Generate next cursor from the last item
             if (products.Count > 0 && !string.IsNullOrWhiteSpace(cursor))
             {
                 context.Response.Headers.Append(nameof(cursor), cursor);

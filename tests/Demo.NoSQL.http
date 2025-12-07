@@ -1,36 +1,73 @@
 @Host = http://localhost:8080
 
+################## MongoDb Documents ##################
+
 
 ######### BY OFFSET #########
 
 
-GET {{Host}}/by-offset?page=99410&pageSize=100
+GET {{Host}}/mg/by-offset?page=2&pageSize=5
 
-### OFFSET - SORTED
+### MongoDb - OFFSET - SORTED
 
-GET {{Host}}/by-offset/sorted?page=2&pageSize=5&sort=-Quantity
+GET {{Host}}/mg/by-offset/sorted?page=2&pageSize=5&sort=-Quantity
 
 
 ######### BY CURSOR #########
 
 
-GET {{Host}}/by-cursor?pageSize=100&cursor=fe7d6f2f-179e-4d08-9b4f-89876100ff89
+GET {{Host}}/mg/by-cursor?pageSize=100&cursor=fe7d6f2f-179e-4d08-9b4f-89876100ff89
 
-### CURSOR - SORTED
+### MongoDb - CURSOR - SORTED
 
-GET {{Host}}/by-cursor/sorted?pageSize=2&sort=-Quantity&cursor=89|fe7d6f2f-179e-4d08-9b4f-89876100ff89
-
-###
-
-GET {{Host}}/by-cursor/sorted?pageSize=10&sort=-Id&cursor=113a4d79-ad9e-4933-90b4-aa5a48ff7ce3|113a4d79-ad9e-4933-90b4-aa5a48ff7ce3
+GET {{Host}}/mg/by-cursor/sorted?pageSize=2&sort=-Quantity&cursor=89|fe7d6f2f-179e-4d08-9b4f-89876100ff89
 
 ###
 
-GET {{Host}}/by-cursor/sorted?pageSize=30&sort=-Quantity
+GET {{Host}}/mg/by-cursor/sorted?pageSize=10&sort=-Id&cursor=113a4d79-ad9e-4933-90b4-aa5a48ff7ce3|113a4d79-ad9e-4933-90b4-aa5a48ff7ce3
 
 ###
 
-GET {{Host}}/by-cursor/sorted?pageSize=30&sort=-Quantity&cursor=30|113a4d79-ad9e-4933-90b4-aa5a48ff7ce3
+GET {{Host}}/mg/by-cursor/sorted?pageSize=30&sort=-Quantity
+
+###
+
+GET {{Host}}/mg/by-cursor/sorted?pageSize=30&sort=-Quantity&cursor=30|113a4d79-ad9e-4933-90b4-aa5a48ff7ce3
+
+
+################## Linq ##################
+
+
+######### BY OFFSET #########
+
+
+GET {{Host}}/lq/by-offset?page=2&pageSize=5
+
+### Linq - OFFSET - SORTED
+
+GET {{Host}}/lq/by-offset/sorted?page=2&pageSize=5&sort=-Quantity
+
+
+######### BY CURSOR #########
+
+
+GET {{Host}}/lq/by-cursor?pageSize=100&cursor=fe7d6f2f-179e-4d08-9b4f-89876100ff89
+
+### Linq - CURSOR - SORTED
+
+GET {{Host}}/lq/by-cursor/sorted?pageSize=2&sort=-Quantity&cursor=89|fe7d6f2f-179e-4d08-9b4f-89876100ff89
+
+###
+
+GET {{Host}}/lq/by-cursor/sorted?pageSize=10&sort=-Id&cursor=113a4d79-ad9e-4933-90b4-aa5a48ff7ce3|113a4d79-ad9e-4933-90b4-aa5a48ff7ce3
+
+###
+
+GET {{Host}}/lq/by-cursor/sorted?pageSize=30&sort=-Quantity
+
+###
+
+GET {{Host}}/lq/by-cursor/sorted?pageSize=30&sort=-Quantity&cursor=30|113a4d79-ad9e-4933-90b4-aa5a48ff7ce3
 
 
 ################## Extra ##################
