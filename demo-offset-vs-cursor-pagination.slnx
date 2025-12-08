@@ -1,4 +1,8 @@
 <Solution>
   <Project Path="src/Demo.NoSQL/Demo.NoSQL.csproj" />
   <Project Path="src/Demo.SQL/Demo.SQL.csproj" />
+  <Project Path="src/Demo.Queryable.Extensions/Demo.Queryable.Extensions.csproj" />
+  <Project Path="tests/Demo.Queryable.Extensions.Tests/Demo.Queryable.Extensions.Tests.csproj" />
+  <Project Path="tests/Demo.Queryable.Extensions.Benchmarks/Demo.Queryable.Extensions.Benchmarks.csproj" />
+  <Project Path="tests/Demo.Queryable.Extensions.App/Demo.Queryable.Extensions.App.csproj" />
 </Solution>

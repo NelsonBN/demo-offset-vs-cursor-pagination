@@ -33,6 +33,7 @@ var app = builder.Build();
 
 app.MapMongoEndpoints();
 app.MapLinqEndpoints();
+app.MapCustomExtensionEndpoints();
 app.MapExtraEndpoints();
 
 await app.RunAsync();

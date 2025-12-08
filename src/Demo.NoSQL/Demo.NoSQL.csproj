@@ -13,6 +13,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\Demo.Queryable.Extensions\Demo.Queryable.Extensions.csproj" />
   </ItemGroup>
 
 

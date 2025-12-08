@@ -70,6 +70,14 @@ GET {{Host}}/lq/by-cursor/sorted?pageSize=30&sort=-Quantity
 GET {{Host}}/lq/by-cursor/sorted?pageSize=30&sort=-Quantity&cursor=30|113a4d79-ad9e-4933-90b4-aa5a48ff7ce3
 
 
+################## Custom Extension ##################
+
+GET {{Host}}/ex/by-cursor/sorted?pageSize=4&sort=-Quantity
+
+###
+
+GET {{Host}}/ex/by-cursor/sorted?pageSize=4&sort=-Quantity&cursor=MmU1ODA3NjQtM2Y5ZS00NTgwLWI2MDEtNjYxY2Y4NDVmYjY4ADMy
+
 ################## Extra ##################
 
 
