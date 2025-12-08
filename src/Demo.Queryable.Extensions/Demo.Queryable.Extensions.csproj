@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+
+    <RootNamespace>Demo.Queryable.Extensions</RootNamespace>
+    <AssemblyName>Demo.Queryable.Extensions</AssemblyName>
+
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
